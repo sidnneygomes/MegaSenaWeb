@@ -1,9 +1,16 @@
 using MegaSenaWeb.Interfaces;
 using MegaSenaWeb.Services;
+using Microsoft.AspNetCore.Hosting;
+using NLog.Web;
 using Polly;
 using Polly.Extensions.Http;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Host.UseNLog();
+
 
 builder.Services.AddSwaggerGen();
 
