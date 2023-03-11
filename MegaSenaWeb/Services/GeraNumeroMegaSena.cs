@@ -24,11 +24,10 @@ namespace MegaSenaWeb.Services
                 if (!content.IsSuccessStatusCode) {
                     return Enumerable.Empty<int>();
                 }
-
                 
                 var result = await content.Content.ReadAsStringAsync();
                 var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<int>>(result);
-                _logger.LogInformation(1, $"Os números sorteados foram {result}");
+                _logger.LogInformation(1, $"Os números sorteados em {DateTime.Now} foram: {result}.");
 
                 return obj;
 
